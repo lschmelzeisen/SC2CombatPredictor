@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+package SC2CombatPredictor;
+
+import "s2clientprotocol/sc2api.proto";
+
+message Battle {
+    enum Outcome {
+        TEAM_MINERALS_WON = 0;
+        TEAM_VESPENE_WON = 1;
+    }
+
+    optional string replay_file = 1;
+    optional int32 round_num = 2;
+    optional SC2APIProtocol.Observation initial_observation = 3;
+    optional Outcome outcome = 4;
+}
+
+message Simulation {
+    repeated Battle battle = 1;
+}
