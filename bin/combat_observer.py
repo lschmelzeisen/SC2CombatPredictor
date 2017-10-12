@@ -97,10 +97,10 @@ def main(unused_argv):
 
                 outcome = None
                 if (curr_num_wins_minerals > last_num_wins_minerals) \
-                        and (last_num_wins_minerals != -1):
+                    and (last_num_wins_minerals != -1):
                     outcome = Battle.TEAM_MINERALS_WON
                 elif (curr_num_wins_vespene > last_num_wins_vespene) \
-                        and (last_num_wins_vespene != -1):
+                    and (last_num_wins_vespene != -1):
                     outcome = Battle.TEAM_VESPENE_WON
                 if outcome is not None:
                     assert curr_battle
@@ -108,7 +108,8 @@ def main(unused_argv):
                     curr_battle = None
 
         replay_parsed_file = os.path.join(
-            REPLAYS_PARSED_DIR, os.path.relpath(replay_file, REPLAY_DIR).replace(
+            REPLAYS_PARSED_DIR,
+            os.path.relpath(replay_file, REPLAY_DIR).replace(
                 '.SC2Replay', '.SC2Replay_parsed'))
         print('Replay completed. Saving parsed replay to "{}".'
               .format(replay_parsed_file), file=sys.stderr)
