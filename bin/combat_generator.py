@@ -19,8 +19,8 @@ import sys
 from absl import app
 from pysc2 import run_configs
 from s2clientprotocol.sc2api_pb2 import Computer, LocalMap, InterfaceOptions, \
-    Participant, PlayerSetup, Random, RequestCreateGame, RequestJoinGame, \
-    VeryEasy
+    Participant, PlayerSetup, RequestCreateGame, RequestJoinGame, VeryEasy
+from s2clientprotocol.common_pb2 import Random
 
 from lib.config import MAP_PATH, REPLAY_DIR
 

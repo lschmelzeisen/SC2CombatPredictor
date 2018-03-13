@@ -19,7 +19,10 @@ Installation of the following dependencies is required:
 
 ### Protobuf
 
-TODO: describe how to compile [`simulation.proto`](https://github.com/lschmelzeisen/SC2CombatPredictor/blob/master/data/simulation.proto) with `protoc`.
+* Install the latest version of [protoc](https://github.com/google/protobuf/releases) for your system.
+* Download the [s2clientprotocol](https://github.com/Blizzard/s2client-proto/tree/master/s2clientprotocol) folder from the [s2client-proto](https://github.com/Blizzard/s2client-proto) repository, and save it in the `./data/` folder of this repository.
+* `cd` into the `./data` folder and run: `protoc -I. --python_out=. *.proto`
+* This ensure that the Python representation of the protobuf format is compiled. So you will have to rerun this  command whenever you update a `*.proto` file.
 
 ## Usage
 
@@ -39,7 +42,7 @@ It features
 * a chat-based interface for configuration
 * multiple army compositions  (currently supports balls of marines, marauders, zealots, stalkers, zerglings, and roaches).
 * shuffling of team army compositions and starting regions
-* score tracking via the mineral/vespene resources display 
+* score tracking via the mineral/vespene resources display
 
 For now, army size is chosen uniformly random between 1 and 40 supply, and armies are simply attack-moved into each other.
 More complicated engagements including more diverse army compositions, formations, and micro controlling are planned to be implemented in the future.
@@ -95,23 +98,23 @@ Using TensorFlow backend.
 Going to learn a model from parsed replay
 "<path_to_repo>\replays_parsed\marine_vs_marine_1000.SC2Replay_parsed".
 _________________________________________________________________
-Layer (type)                 Output Shape              Param #   
+Layer (type)                 Output Shape              Param #
 =================================================================
-conv2d_1 (Conv2D)            (None, 81, 81, 32)        544       
+conv2d_1 (Conv2D)            (None, 81, 81, 32)        544
 _________________________________________________________________
-conv2d_2 (Conv2D)            (None, 78, 78, 64)        32832     
+conv2d_2 (Conv2D)            (None, 78, 78, 64)        32832
 _________________________________________________________________
-max_pooling2d_1 (MaxPooling2 (None, 19, 19, 64)        0         
+max_pooling2d_1 (MaxPooling2 (None, 19, 19, 64)        0
 _________________________________________________________________
-dropout_1 (Dropout)          (None, 19, 19, 64)        0         
+dropout_1 (Dropout)          (None, 19, 19, 64)        0
 _________________________________________________________________
-flatten_1 (Flatten)          (None, 23104)             0         
+flatten_1 (Flatten)          (None, 23104)             0
 _________________________________________________________________
-dense_1 (Dense)              (None, 128)               2957440   
+dense_1 (Dense)              (None, 128)               2957440
 _________________________________________________________________
-dropout_2 (Dropout)          (None, 128)               0         
+dropout_2 (Dropout)          (None, 128)               0
 _________________________________________________________________
-dense_2 (Dense)              (None, 2)                 258       
+dense_2 (Dense)              (None, 2)                 258
 =================================================================
 Total params: 2,991,074
 Trainable params: 2,991,074
@@ -139,7 +142,7 @@ Epoch 9/10
 Epoch 10/10
 36s - loss: 0.2073 - acc: 0.9200 - val_loss: 0.1023 - val_acc: 0.9800
  50/100 [==============>...............] - ETA: 0s
-100/100 [==============================] - 1s     
+100/100 [==============================] - 1s
 Loss = 0.12825651839375496
 Acc = 0.9599999785423279
 Done.
